@@ -65,7 +65,7 @@ export default function TaskForm() {
             type="time" 
             id="startTime" 
             className="p-2 border border-slate-500 w-full focus:border-2 focus:border-yellow-500 focus:outline-none rounded-lg input-element text-slate-400" 
-            value={dueDate}
+            value={startTime}
             onChange={(e)=>{setStartTime(e.target.value)}}
             required />
     </div>
@@ -75,7 +75,7 @@ export default function TaskForm() {
             type="time" 
             id="startTime" 
             className="p-2 border border-slate-500 w-full focus:border-2 focus:border-yellow-500 focus:outline-none rounded-lg input-element text-slate-400" 
-            value={dueDate}
+            value={endTime}
             onChange={(e)=>{setEndTime(e.target.value)}}
             required />
     </div>
@@ -85,6 +85,8 @@ export default function TaskForm() {
             type="date" 
             id="dueDate" 
             className="p-2 border border-slate-500 w-full focus:border-2 focus:border-yellow-500 focus:outline-none rounded-lg input-element text-slate-400" 
+            value={dueDate}
+            onChange={(e)=>{setDueDate(e.target.value)}}
             required />
     </div>
     <div className='items-center justify-center flex pt-3'>
