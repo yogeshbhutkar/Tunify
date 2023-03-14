@@ -2,15 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    background-color: #212832;
+}
+
+
 .task-data {
-    background-color: #f0eded;
-    min-height: 100vh;
+    background-color: #393D46;
+    /* min-height: 80vh; */
    }
 
-   .spinner {
+.task-color {
+    background-color: #212832 ;
+}
+
+.spinner {
     padding-top: 30vh;
-   }
+}
 
-.form-bg {
-    background-color: #f0eded;
+.form-bg, .UserCard{
+    background-color: #393D46;
+}
+
+.input-element {
+    background-color: #29313b;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator{
+    color-scheme: dark;
+    }
+
+input[type="date"]::-webkit-calendar-picker-indicator{
+    color-scheme: dark;
 }

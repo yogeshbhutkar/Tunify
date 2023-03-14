@@ -29,10 +29,10 @@ const getTask = async (req, res) => {
 
 //create a task
 const createTask = async (req, res) => {
-    const {title, description, dueDate} = req.body
+    const {title, description, dueDate, startTime, endTime} = req.body
     
     try {
-        const task = await taskModel.create({title, description, dueDate})
+        const task = await taskModel.create({title, description, dueDate, startTime, endTime})
         
         return res.status(200).json(task)
     }catch(err){
