@@ -3,7 +3,14 @@
 @tailwind utilities;
 
 .task-data {
-    background-color: #F8FAFB;
+    background-color: #f0eded;
     min-height: 100vh;
    }
 
+   .spinner {
+    padding-top: 30vh;
+   }
+
+.form-bg {
+    background-color: #f0eded;
+}

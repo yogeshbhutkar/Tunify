@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function TaskForm({data, setData}) {
+export default function TaskForm() {
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -16,15 +16,12 @@ export default function TaskForm({data, setData}) {
             headers: {
                 "Content-Type": "application/json"
             }
-        })
+        }) 
         const json = await response.json()
         if (!response.ok){
             setError(response.error)
         }
         if (response.ok){
-            console.log(json)
-            console.log(JSON.stringify(data.push(json)))
-            // setData(data => {JSON.stringify(data).push(json).parse()})
             setTitle('')
             setDescription('')
             setDueDate('')
@@ -35,7 +32,8 @@ export default function TaskForm({data, setData}) {
 
 
   return (
-    <form className='pt-10' onSubmit={handleSubmit}>
+    <div className='form-bg px-5 h-fit mt-10 p-7 rounded-lg'>
+    <form className='pb=10' onSubmit={handleSubmit}>
     <p className='pb-5 font-bold'>Add an appointment</p>
     <div className="mb-6">
         <label htmlFor="title" className="block mb-2 text-sm font-medium">Your title</label>
@@ -59,7 +57,7 @@ export default function TaskForm({data, setData}) {
             required />
     </div>
     <div className="mb-6">
-        <label htmlFor="dueDate" className="block mb-2 text-sm font-medium">Your description</label>
+        <label htmlFor="dueDate" className="block mb-2 text-sm font-medium">Time slot</label>
         <input 
             type="date" 
             id="description" 
@@ -78,5 +76,6 @@ export default function TaskForm({data, setData}) {
         )
     }
     </form>
+    </div>
   )
 }

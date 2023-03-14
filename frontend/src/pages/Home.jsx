@@ -8,9 +8,9 @@ export default function Home() {
     const {data, isPending, error, setData} = useFetch('/api/tasks')
 
   return (
-    <>
-      <Tasks data={data} isPending={isPending} error={error} />
+    <div className='flex'>
+      <Tasks data={data} error={error} isPending={isPending} />
       <TaskForm setData={setData} data={data}/>
-    </>
+    </div>
   )
 }
