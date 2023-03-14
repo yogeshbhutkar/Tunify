@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.task-data {
+    background-color: #F8FAFB;
+    min-height: 100vh;
+   }
+
