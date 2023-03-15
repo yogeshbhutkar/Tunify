@@ -14,6 +14,7 @@ export default function Login() {
     const { signIn } = UserAuth()
 
     const handleSubmit = async (e) => {
+        console.log(error)
         e.preventDefault()
         setError('')
         try {

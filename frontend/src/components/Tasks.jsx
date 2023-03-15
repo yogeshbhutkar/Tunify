@@ -1,10 +1,9 @@
 import DetailedTasks from './DetailedTasks'
-import { useFetch } from '../hooks/useFetch';
 import ClipLoader from 'react-spinners/ClipLoader';
 
-export default function Tasks({ defaultDate }) {
+export default function Tasks({ defaultDate, data, isPending, error}) {
 
-    const { data, isPending, error} = useFetch('/api/tasks')
+    
 
     const checkDate = (t) => {
       if (t.dueDate){
@@ -28,7 +27,7 @@ export default function Tasks({ defaultDate }) {
           <div>
           { data && data.filter(checkDate).map((task)=>
             (<div key={task._id} className='mx-7 mt-7'>
-            <DetailedTasks title={task.title} data={data} description={task.description} id={task._id} />
+            <DetailedTasks title={task.title}  description={task.description} id={task._id} />
           </div>)
           )
         }

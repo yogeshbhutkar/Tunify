@@ -3,18 +3,45 @@ import { useNavigate } from 'react-router-dom'
 
 export default function TaskForm({setDueDate, dueDate, data}) {
 
+ 
+
     const navigate = useNavigate()
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [startTime, setStartTime] = useState('')
     const [endTime, setEndTime] = useState('')
-    
     const [error, setError] = useState(null)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         const task = {title, description, dueDate, startTime, endTime}
+        for (var i=0; i<data.length; i++){
+            console.log(data[i])
+            console.log(data[i].dueDate)
+            console.log(dueDate)
+            if (data[i]?.dueDate.substring(0,10)===dueDate){
+                console.log("inside for")
+                if (data[i].startTime<=startTime && data[i].endTime>=endTime){
+                    console.log("Error caught 1")
+                    setError('Overlap detected, kindly delete and proceed')
+                    return
+                }else if (data[i].startTime >= startTime && data[i].endTime >=endTime && startTime <= data[i].endTime && endTime>=data[i].startTime){
+                    console.log("error caught 2")
+                    setError('Overlap detected, kindly delete and proceed')
+                    return
+                }else if (data[i].startTime<=startTime && startTime<=data[i].endTime && endTime>=data[i].startTime && endTime>=data[i].endTime){
+                    console.log("error caught 3")
+                    setError('Overlap detected, kindly delete and proceed')
+                    return
+                }else if (startTime<=data[i].startTime && startTime <= data[i].endTime && endTime>=data[i].startTime && endTime>=data[i].endTime){
+                    console.log("error caught 4")
+                    setError('Overlap detected, kindly delete and proceed')
+                    return
+                }
+            }
+        }
+
         console.log(task)
         if (startTime===endTime){
             setError("The appointment cannot start and end at the same time.")

@@ -16,6 +16,7 @@ export default function SignUp() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        console.log(error)
         setError('')
         try {
             await createUser(email, password)
