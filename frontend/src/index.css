@@ -25,7 +25,7 @@ body {
 }
 
 .input-element {
-    background-color: #29313b;
+    background-color: #29313b !important;
 }
 
 input[type="time"]::-webkit-calendar-picker-indicator{

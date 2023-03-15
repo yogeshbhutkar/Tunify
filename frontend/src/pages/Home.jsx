@@ -1,19 +1,22 @@
 import React from 'react'
+import { useState } from 'react'
 import Tasks from '../components/Tasks'
 import TaskForm from '../components/TaskForm'
-import { useFetch } from '../hooks/useFetch.js'
 import UserCard from '../components/UserCard'
 
 export default function Home() {
 
-    const {data, isPending, error, setData} = useFetch('/api/tasks')
+  
+  const todaysDate = new Date()
+  const fullDate = todaysDate.getFullYear()+'-'+((todaysDate.getMonth()+1) < 10 ? ("0"+(todaysDate.getMonth()+1)):(todaysDate.getMonth()+1) )+"-"+todaysDate.getDate()
+  const [dueDate, setDueDate] = useState(fullDate)
 
   return (
     <div className='flex home'>
-      <Tasks data={data} error={error} isPending={isPending} />
+      <Tasks defaultDate={dueDate}  />
       <div className='flex-1'>
       <UserCard />
-      <TaskForm setData={setData} data={data}/>
+      <TaskForm setDueDate={setDueDate} dueDate={dueDate}/>
       </div>
     </div>
   )

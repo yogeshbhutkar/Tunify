@@ -8,7 +8,7 @@ export default function Navbar() {
     <div className="flex items-center justify-between h-16">
       <Link to="/" className="text-2xl text-white font-semibold">Tunify</Link>
       <div className="flex space-x-4 text-white">
-        <a href="/">Log out</a>
+        <p>Dashboard</p>
       </div>
     </div>
   </div>

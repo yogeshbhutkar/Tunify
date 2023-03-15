@@ -1,17 +1,21 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-export default function TaskForm() {
+export default function TaskForm({setDueDate, dueDate}) {
+
+    const navigate = useNavigate()
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [startTime, setStartTime] = useState('')
     const [endTime, setEndTime] = useState('')
-    const [dueDate, setDueDate] = useState('')
+    
     const [error, setError] = useState(null)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         const task = {title, description, dueDate, startTime, endTime}
+        console.log(task)
         const response = await fetch('/api/tasks', {
             method: "POST",
             body: JSON.stringify(task),
@@ -31,6 +35,7 @@ export default function TaskForm() {
             setEndTime('')
             setError(null)
             console.log("new appointment added", json)
+            navigate(0)
         }
     }
 
