@@ -26,6 +26,10 @@ const taskSchema = new Schema({
     completed: {
         type: Boolean,
         default: false,
+    },
+    uniqueID: {
+        type: String,
+        required: true,
     }
 }, { timestamps:true } )
 
