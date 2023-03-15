@@ -7,7 +7,9 @@ export default function Tasks({ defaultDate }) {
     const { data, isPending, error} = useFetch('/api/tasks')
 
     const checkDate = (t) => {
-      return t.dueDate.substring(0,10)===defaultDate
+      if (t.dueDate){
+        return t.dueDate.substring(0,10)===defaultDate
+      }
     }
 
 
@@ -26,7 +28,7 @@ export default function Tasks({ defaultDate }) {
           <div>
           { data && data.filter(checkDate).map((task)=>
             (<div key={task._id} className='mx-7 mt-7'>
-            <DetailedTasks title={task.title} description={task.description} id={task._id} />
+            <DetailedTasks title={task.title} data={data} description={task.description} id={task._id} />
           </div>)
           )
         }

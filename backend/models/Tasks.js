@@ -16,11 +16,11 @@ const taskSchema = new Schema({
         required: true,
     },
     endTime:{
-        type: Date,
+        type: String,
         required: true,
     },
     dueDate: {
-        type: Date,
+        type: String,
         required: true,
     },
     completed: {

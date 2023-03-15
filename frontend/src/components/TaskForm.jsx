@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export default function TaskForm({setDueDate, dueDate}) {
+export default function TaskForm({setDueDate, dueDate, data}) {
 
     const navigate = useNavigate()
 
@@ -12,13 +12,16 @@ export default function TaskForm({setDueDate, dueDate}) {
     
     const [error, setError] = useState(null)
 
-
     const handleSubmit = async (e) => {
         e.preventDefault()
         const task = {title, description, dueDate, startTime, endTime}
         console.log(task)
         if (startTime===endTime){
             setError("The appointment cannot start and end at the same time.")
+            return
+        }
+        if (startTime>=endTime){
+            setError("The appointment must start before it ends.")
             return
         }
         const response = await fetch('/api/tasks', {
@@ -69,6 +72,16 @@ export default function TaskForm({setDueDate, dueDate}) {
             onChange={(e)=>{setDescription(e.target.value)}}
             required />
     </div>
+    <div className='mb-6'>
+    <label htmlFor="dueDate" className=" text-white block mb-2 text-sm font-medium">Date</label>
+        <input 
+            type="date" 
+            id="dueDate" 
+            className="p-2 border border-slate-500 w-full focus:border-2 focus:border-yellow-500 focus:outline-none rounded-lg input-element text-slate-400" 
+            value={dueDate}
+            onChange={(e)=>{setDueDate(e.target.value)}}
+            required />
+    </div>
     <div className="mb-6">
         <label htmlFor="startTime" className=" text-white block mb-2 text-sm font-medium">Start time</label>
         <input 
@@ -89,16 +102,7 @@ export default function TaskForm({setDueDate, dueDate}) {
             onChange={(e)=>{setEndTime(e.target.value)}}
             required />
     </div>
-    <div className='mb-6'>
-    <label htmlFor="dueDate" className=" text-white block mb-2 text-sm font-medium">Date</label>
-        <input 
-            type="date" 
-            id="dueDate" 
-            className="p-2 border border-slate-500 w-full focus:border-2 focus:border-yellow-500 focus:outline-none rounded-lg input-element text-slate-400" 
-            value={dueDate}
-            onChange={(e)=>{setDueDate(e.target.value)}}
-            required />
-    </div>
+    
     <div className='items-center justify-center flex pt-3'>
         <button type="submit" className="items-center justify-center text-white bg-amber-500 px-8 py-2 rounded-lg text-center hover:bg-yellow-600 focus:ring-4 ">Add</button>
     </div>
