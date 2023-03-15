@@ -12,10 +12,15 @@ export default function TaskForm({setDueDate, dueDate}) {
     
     const [error, setError] = useState(null)
 
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         const task = {title, description, dueDate, startTime, endTime}
         console.log(task)
+        if (startTime===endTime){
+            setError("The appointment cannot start and end at the same time.")
+            return
+        }
         const response = await fetch('/api/tasks', {
             method: "POST",
             body: JSON.stringify(task),
@@ -100,8 +105,8 @@ export default function TaskForm({setDueDate, dueDate}) {
     {
         error && 
         (
-            <div className='text-red-600 font-bold'>
-                Some error occured, please retry.
+            <div className='text-red-500 text-center pt-5 font-bold'>
+                {error}
             </div>
         )
     }

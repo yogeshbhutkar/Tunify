@@ -10,6 +10,7 @@ export default function Tasks({ defaultDate }) {
       return t.dueDate.substring(0,10)===defaultDate
     }
 
+
     const errorMessage = 'Error occured while fetching data from the server'
   return (
     <div className='flex flex-col h-screen justify-center rounded-xl task-data mx-10 my-10 w-[75%]'>
