@@ -1,13 +1,19 @@
 import DetailedTasks from './DetailedTasks'
 import ClipLoader from 'react-spinners/ClipLoader';
-
+import { UserAuth } from '../context/AuthContext'
 export default function Tasks({ defaultDate, data, isPending, error}) {
 
-    
+  const { user } = UserAuth()
 
     const checkDate = (t) => {
       if (t.dueDate){
         return t.dueDate.substring(0,10)===defaultDate
+      }
+    }
+
+    const checkUser = (t) => {
+      if (t.uniqueID){
+        return t.uniqueID===user.uid
       }
     }
 
@@ -25,7 +31,7 @@ export default function Tasks({ defaultDate, data, isPending, error}) {
           </div>
       ) :(
           <div>
-          { data && data.filter(checkDate).map((task)=>
+          { data && data.filter(checkDate).filter(checkUser).map((task)=>
             (<div key={task._id} className='mx-7 mt-7'>
             <DetailedTasks title={task.title}  description={task.description} id={task._id} />
           </div>)

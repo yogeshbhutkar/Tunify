@@ -1,26 +1,28 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { UserAuth } from '../context/AuthContext'
+
 export default function TaskForm({setDueDate, dueDate, data}) {
 
- 
-
     const navigate = useNavigate()
-
+    
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [startTime, setStartTime] = useState('')
     const [endTime, setEndTime] = useState('')
     const [error, setError] = useState(null)
+    const {user} = UserAuth()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const task = {title, description, dueDate, startTime, endTime}
+        const uniqueID = user.uid
+        const task = {title, description, dueDate, startTime, endTime, uniqueID}
         for (var i=0; i<data.length; i++){
             console.log(data[i])
             console.log(data[i].dueDate)
             console.log(dueDate)
-            if (data[i]?.dueDate.substring(0,10)===dueDate){
+            if (data[i]?.dueDate.substring(0,10)===dueDate && user.uid===data[i].uniqueID){
                 console.log("inside for")
                 if (data[i].startTime<=startTime && data[i].endTime>=endTime){
                     console.log("Error caught 1")
