@@ -12,7 +12,7 @@ const taskSchema = new Schema({
         required: true,
     },
     startTime: {
-        type: Date,
+        type: String,
         required: true,
     },
     endTime:{
@@ -20,7 +20,7 @@ const taskSchema = new Schema({
         required: true,
     },
     dueDate: {
-        type: String,
+        type: Date,
         required: true,
     },
     completed: {
