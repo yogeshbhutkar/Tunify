@@ -53,7 +53,7 @@ export default function TaskForm({setDueDate, dueDate, data}) {
             setError("The appointment must start before it ends.")
             return
         }
-        const response = await fetch('/api/tasks', {
+        const response = await fetch('https://tunify.onrender.com/api/tasks', {
             method: "POST",
             body: JSON.stringify(task),
             headers: {

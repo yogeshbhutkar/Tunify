@@ -7,7 +7,7 @@ import { useFetch } from '../hooks/useFetch';
 
 export default function Home() {
 
-  const { data, isPending, error} = useFetch('/api/tasks')
+  const { data, isPending, error} = useFetch('https://tunify.onrender.com/api/tasks')
 
   const todaysDate = new Date()
   const fullDate = todaysDate.getFullYear()+'-'+((todaysDate.getMonth()+1) < 10 ? ("0"+(todaysDate.getMonth()+1)):(todaysDate.getMonth()+1) )+"-"+todaysDate.getDate()

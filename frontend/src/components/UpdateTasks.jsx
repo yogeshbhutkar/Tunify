@@ -12,7 +12,7 @@ export default function UpdateTasks() {
   const [ description, setDescription ] = useState('')
   const [ error, setError ] = useState(null)
   
-  const { data } = useFetch(`/api/tasks/${params.id}`)
+  const { data } = useFetch(`https://tunify.onrender.com/api/tasks/${params.id}`)
   if (data && (title==='' || description==='')){
     setTitle(data['title'])
     setDescription(data['description'])
@@ -34,7 +34,7 @@ export default function UpdateTasks() {
     }
 
 
-        const response = await fetch(`/api/tasks/${params.id}`, {
+        const response = await fetch(`https://tunify.onrender.com/api/tasks/${params.id}`, {
             method: "PATCH",
             body: JSON.stringify(task),
             headers: {

@@ -12,7 +12,7 @@ export default function DetailedTasks({title, description, id}) {
     const handleDelete = async (id) => {
 
 
-        const response = await fetch(`/api/tasks/${id}`, {
+        const response = await fetch(`https://tunify.onrender.com/api/tasks/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
