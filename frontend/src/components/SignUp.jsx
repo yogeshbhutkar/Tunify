@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 // import { useCallback } from 'react'
 // import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { UserAuth } from '../context/AuthContext'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 export default function SignUp() {
 
@@ -39,6 +39,9 @@ export default function SignUp() {
             <div className="mb-6">
                 <label htmlFor="password" className="block mb-2 text-sm text-white font-medium">Your password</label>
                 <input onChange={(e)=>setPassword(e.target.value)} type="password" password="password" id="password" className="caret-white w-full text-white border focus:border-2 focus:border-yellow-500 focus:outline-none border-slate-500 p-2 rounded-lg input-element" placeholder='password' required />
+            </div>
+            <div>
+                <p className='text-white font-semibold text-md'>Don't have an account ?<span className='text-slate-400'> <Link to="/login">Login</Link></span></p>
             </div>
             <div className='items-center justify-center flex pt-3'>
                 <button type="submit" className="items-center justify-center flex text-white bg-amber-500 px-8 py-2 rounded-lg text-center hover:bg-yellow-600 focus:ring-4 ">Sign Up</button>
