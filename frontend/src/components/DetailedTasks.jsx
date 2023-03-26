@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-export default function DetailedTasks({title, description, id}) {
+export default function DetailedTasks({title, description, id, startTime, endTime}) {
 
     const limitTitle = (data) => {
         return data.substring(0, 30)
@@ -32,7 +32,11 @@ export default function DetailedTasks({title, description, id}) {
     <div className="task-color px-10 shadow-lg shadow-yellow-600/20 text-white p-3 rounded-lg flex items-center w-full justify-between">
         <div className=''>
             <h1 className="text-xl font-bold">{limitTitle(title)}</h1>
-            <p className="text-gray-400 inline">{description}</p>
+            <p className="text-gray-400">{description}</p>
+            <div className='pt-2'>
+                <p className="text-gray-400 inline">Start Time: {startTime}</p>
+                <p className="text-gray-400 inline pl-5">End Time: {endTime}</p>
+            </div>
         </div>
         <div className='flex'>
             <Link to={`/update/${id}`}>

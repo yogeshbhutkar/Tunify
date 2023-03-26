@@ -33,7 +33,8 @@ export default function Tasks({ defaultDate, data, isPending, error}) {
           <div>
           { data && data.filter(checkDate).filter(checkUser).map((task)=>
             (<div key={task._id} className='mx-7 mt-7'>
-            <DetailedTasks title={task.title}  description={task.description} id={task._id} />
+              {console.log(task)}
+            <DetailedTasks title={task.title} startTime={task.startTime} endTime={task.endTime}  description={task.description} id={task._id} />
           </div>)
           )
         }

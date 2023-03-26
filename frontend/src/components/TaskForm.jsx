@@ -14,10 +14,13 @@ export default function TaskForm({setDueDate, dueDate, data}) {
     const [error, setError] = useState(null)
     const {user} = UserAuth()
 
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         const uniqueID = user.uid
         const task = {title, description, dueDate, startTime, endTime, uniqueID}
+
+        //Checking for overlaps
         for (var i=0; i<data.length; i++){
             console.log(data[i])
             console.log(data[i].dueDate)
@@ -27,7 +30,9 @@ export default function TaskForm({setDueDate, dueDate, data}) {
                 if (data[i].startTime<=startTime && data[i].endTime>=endTime){
                     console.log("Error caught 1")
                     setError('Overlap detected, kindly delete and proceed')
+                    console.log(error)
                     return
+                
                 }else if (data[i].startTime >= startTime && data[i].endTime >=endTime && startTime <= data[i].endTime && endTime>=data[i].startTime){
                     console.log("error caught 2")
                     setError('Overlap detected, kindly delete and proceed')

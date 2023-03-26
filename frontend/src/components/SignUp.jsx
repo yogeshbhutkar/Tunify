@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-// import { useCallback } from 'react'
-// import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { UserAuth } from '../context/AuthContext'
 import { useNavigate, Link } from 'react-router-dom'
 
